@@ -6,3 +6,10 @@
   width: 200px;
   color: var(--light);
 }
+#now-playing {
+  position: fixed;
+  bottom: 10px;
+  right: 0;
+  left: 0;
+  /* width: 100%; */
+}

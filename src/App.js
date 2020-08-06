@@ -14,9 +14,21 @@ class App extends Component {
     super();
     this.state = {
       tracks: [],
+      currentTrack: "",
+      index: 0,
     };
   }
 
+  handleClick = (id) => {
+    console.log(id);
+    let { tracks } = this.state;
+    let c = tracks.filter((track) => track.id === id);
+    this.setState({
+      currentTrack: c[0],
+    });
+  };
+
+  // Fetch Data from the API
   fetchData = async () => {
     try {
       // "https://api.jamendo.com//v3.0/albums/?client_id=d5d26306"
@@ -28,9 +40,22 @@ class App extends Component {
       );
       const responseJson = await response.json();
       let tracks = responseJson.results;
+      let allTracks = tracks.map((track) => {
+        return track.tracks.map((t) => t);
+      });
 
+      let collectedTracks = [];
+      allTracks.forEach((track) => {
+        for (let i = 0; i < track.length; i++) {
+          collectedTracks.push(track[i]);
+        }
+      });
+      let { index } = this.state;
+      let currentTrack = collectedTracks[index];
+      console.log(currentTrack);
       this.setState({
-        tracks,
+        tracks: collectedTracks,
+        currentTrack,
       });
     } catch (error) {
       console.log(error.message);
@@ -41,18 +66,31 @@ class App extends Component {
     this.fetchData();
   }
   render() {
-    const { tracks } = this.state;
+    const { tracks, currentTrack } = this.state;
     return (
       <Router>
         <Switch>
           <Route
             exact
             path="/"
-            render={(props) => <Homepage {...props} tracks={tracks} />}
+            render={(props) => (
+              <Homepage
+                {...props}
+                tracks={tracks}
+                currentTrack={currentTrack}
+              />
+            )}
           />
           <Route
             path="/tracks"
-            render={(props) => <Tracks {...props} tracks={tracks} />}
+            render={(props) => (
+              <Tracks
+                {...props}
+                tracks={tracks}
+                currentTrack={currentTrack}
+                handleClick={this.handleClick}
+              />
+            )}
           />
           <Route
             path="/albums"

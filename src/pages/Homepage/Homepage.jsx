@@ -3,11 +3,11 @@ import React from "react";
 // Componets
 import Sidebar from "../../components/Sidebar/Sidebar";
 import Featured from "../../components/Featured/Featured";
-// import Tracks from "../Tracks/Tracks";
+import NowPlaying from "../../components/NowPlaying/NowPlaying";
 // CSS
 import "./Homepage.css";
 
-const HomePage = () => {
+const HomePage = (props) => {
   return (
     <div className="container-fluid">
       <div className="row">
@@ -19,7 +19,9 @@ const HomePage = () => {
             <Featured />
           </div>
           <div className="w-100">
-            {/* <Tracks tracks={this.props.tracks} /> */}
+            <div id="now-playing">
+              <NowPlaying currentTrack={props.currentTrack} />
+            </div>
           </div>
         </div>
       </div>
