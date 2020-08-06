@@ -1,0 +1,30 @@
+#featured {
+  width: 100%;
+  height: 50vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #ffffff;
+}
+
+.featured-img {
+  width: 420px;
+}
+.featured-tag {
+  background: #fff;
+  border-radius: 20px;
+  color: var(--pink);
+  padding: 15px 30px;
+  font-size: inherit;
+  font-weight: 700;
+  width: 280px;
+  letter-spacing: 2.3px;
+}
+.featured-title {
+  font-size: 55px;
+  font-weight: 700px;
+}
+.featured-artist {
+  font-weight: 300;
+  font-size: 18px;
+}
