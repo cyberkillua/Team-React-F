@@ -32,6 +32,12 @@ const Sidebar = () => {
               <i className="pr-3 fas fa-compact-disc"></i> Albums
             </Link>
           </li>
+          <li className="nav-link">
+            {" "}
+            <Link to="/tracks">
+              <i className="pr-3 fas fa-compact-disc"></i> Tracks
+            </Link>
+          </li>
         </ul>
       </div>
 
