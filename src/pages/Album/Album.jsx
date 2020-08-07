@@ -3,9 +3,9 @@ import React, { Component } from "react";
 import "./Album.css";
 
 class Album extends Component {
-  constructor() {
-    super();
-  }
+  // constructor() {
+  //   super();
+  // }
 
   componentDidMount() {
     let path = this.props.match.path;

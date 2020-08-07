@@ -3,9 +3,9 @@ import Track from "../../components/Track/Track";
 import NowPlaying from "../../components/NowPlaying/NowPlaying";
 
 class Tracks extends Component {
-  constructor() {
-    super();
-  }
+  // constructor() {
+  //   super();
+  // }
   componentDidMount() {
     let path = this.props.match.path;
     this.props.handlePath(path);

@@ -8,9 +8,9 @@ import NowPlaying from "../../components/NowPlaying/NowPlaying";
 import "./Homepage.css";
 
 class HomePage extends Component {
-  constructor() {
-    super();
-  }
+  // constructor() {
+  //   super();
+  // }
 
   componentDidMount() {
     let path = this.props.match.path;
