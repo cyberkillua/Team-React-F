@@ -2,9 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Logo from "./logo.png";
 import "./Sidebar.css";
-const Sidebar = () => {
+
+const Sidebar = ({ path }) => {
   return (
-    <section className="mx-3 py-4">
+    <section className="px-3 py-4" id="sidebar">
       <div id="brand" className="my-3">
         <Link to="/">
           <img src={Logo} alt="" />
@@ -16,25 +17,25 @@ const Sidebar = () => {
         <ul className="nav-link-group list-unstyled px-0">
           <li className="nav-link">
             {" "}
-            <Link to="/">
+            <Link to="/" id={path === "/" ? "active-nav" : ""}>
               <i className="pr-3 fab fa-searchengin"></i> Explore
             </Link>
           </li>
           <li className="nav-link">
             {" "}
-            <Link to="/artists">
+            <Link to="/artists" id={path === "/artists" ? "active-nav" : ""}>
               <i className="pr-3 fas fa-users"></i>Artists
             </Link>{" "}
           </li>
           <li className="nav-link">
             {" "}
-            <Link to="/albums">
+            <Link to="/albums" id={path === "/albums" ? "active-nav" : ""}>
               <i className="pr-3 fas fa-compact-disc"></i> Albums
             </Link>
           </li>
           <li className="nav-link">
             {" "}
-            <Link to="/tracks">
+            <Link to="/tracks" id={path === "/tracks" ? "active-nav" : ""}>
               <i className="pr-3 fas fa-compact-disc"></i> Tracks
             </Link>
           </li>
