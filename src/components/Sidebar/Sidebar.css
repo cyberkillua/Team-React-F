@@ -1,3 +1,13 @@
+#sidebar {
+  background: #ffffff;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 255px;
+  color: var(--light);
+}
 .sidebar-heading {
   font-weight: 700;
   font-size: 13px;
@@ -26,4 +36,8 @@
 }
 .add-btn:hover {
   opacity: 0.9;
+}
+
+#active-nav {
+  color: var(--pink) !important;
 }

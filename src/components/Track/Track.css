@@ -1,0 +1,9 @@
+.track {
+  cursor: pointer;
+  border-left: 1px solid rgba(0, 0, 0, 0.3);
+  padding: 10px;
+}
+.track-title {
+  font-size: 16px;
+  color: var(--darkPink);
+}
