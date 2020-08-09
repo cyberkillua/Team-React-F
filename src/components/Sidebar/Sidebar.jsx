@@ -5,7 +5,7 @@ import "./Sidebar.css";
 
 const Sidebar = ({ path }) => {
   return (
-    <section className="px-3 py-4" id="sidebar">
+    <section className="px-3 py-4 mx-0" id="sidebar">
       <div id="brand" className="my-3">
         <Link to="/">
           <img src={Logo} alt="" />

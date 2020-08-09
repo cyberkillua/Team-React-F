@@ -17,10 +17,12 @@ class App extends Component {
     super();
     this.state = {
       albums: [],
+      artists: [],
       tracks: [],
       currentTrack: "",
       index: 0,
       path: "/",
+      featuredClicked: false,
     };
   }
 
@@ -29,34 +31,41 @@ class App extends Component {
       path,
     });
   };
-  handleClick = (id) => {
+  handleClick = (id, featuredClicked = false) => {
     console.log(id);
     let { tracks } = this.state;
     let c = tracks.filter((track) => track.id === id);
+    console.log(c);
     this.setState({
       currentTrack: c[0],
+      featuredClicked:
+        featuredClicked === true
+          ? !this.state.featuredClicked
+          : this.state.featuredClicked,
     });
   };
 
-  // Fetch Data from the API
-  fetchData = async () => {
+  async componentDidMount() {
     try {
-      let collectedTracks = [];
-      // "https://api.jamendo.com//v3.0/albums/?client_id=d5d26306"
-      //   "https://api.jamendo.com/v3.0/albums/?client_id=d5d26306&format=jsonpretty&artist_name=we+are+fm"
-      //   "https://api.jamendo.com/v3.0/albums/file/?client_id=d5d26306&id=2"
-      //   "https://api.jamendo.com/v3.0/albums/tracks/?client_id=d5d26306"
-      const response = await fetch(
-        "https://api.jamendo.com/v3.0/albums/tracks/?client_id=d5d26306&limit=all"
-      );
+      let [albumResponse, artistsResponse] = await Promise.all([
+        fetch(
+          "https://api.jamendo.com/v3.0/albums/tracks/?client_id=d5d26306&limit=all"
+        ),
+        fetch(
+          "https://api.jamendo.com/v3.0/artists/?client_id=d5d26306&limit=all"
+        ),
+      ]);
 
-      const responseJson = await response.json();
-      let albums = responseJson.results;
-      // console.log(albums);
+      const albumResponseJson = await albumResponse.json();
+      const artistsResponseJson = await artistsResponse.json();
+
+      let collectedTracks = [];
+      let albums = albumResponseJson.results;
+      let artists = artistsResponseJson.results;
       let allTracks = albums.map((album) => {
         return album.tracks.map((t) => t);
       });
-
+      console.log(artists);
       allTracks.forEach((track) => {
         for (let i = 0; i < track.length; i++) {
           collectedTracks.push(track[i]);
@@ -64,27 +73,30 @@ class App extends Component {
       });
       let { index } = this.state;
       let currentTrack = collectedTracks[index];
-      // console.log(currentTrack);
       this.setState({
         tracks: collectedTracks,
         currentTrack,
         albums,
+        artists,
       });
-    } catch (error) {
-      console.log(error.message);
+    } catch (err) {
+      console.log(err);
     }
-  };
-
-  componentDidMount() {
-    this.fetchData();
   }
   render() {
-    const { tracks, currentTrack, path, albums } = this.state;
+    const {
+      tracks,
+      currentTrack,
+      path,
+      albums,
+      featuredClicked,
+      artists,
+    } = this.state;
     return (
       <Router>
         <div className="container-fluid">
           <div className="row">
-            <div className="col-2">
+            <div className="col-2 px-0">
               <Sidebar path={path} />
             </div>
             <div className="col-10 px-0">
@@ -98,6 +110,9 @@ class App extends Component {
                       tracks={tracks}
                       currentTrack={currentTrack}
                       handlePath={this.handlePath}
+                      handleClick={this.handleClick}
+                      featuredClicked={featuredClicked}
+                      artists={artists}
                     />
                   )}
                 />
@@ -130,6 +145,7 @@ class App extends Component {
                     <Artists
                       {...props}
                       tracks={tracks}
+                      artists={artists}
                       handlePath={this.handlePath}
                     />
                   )}

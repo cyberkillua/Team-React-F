@@ -1,11 +1,11 @@
 #sidebar {
   background: #ffffff;
   height: 100vh;
-  position: fixed;
+  /* position: fixed; */
   left: 0;
   top: 0;
   bottom: 0;
-  width: 255px;
+  width: 100%;
   color: var(--light);
 }
 .sidebar-heading {

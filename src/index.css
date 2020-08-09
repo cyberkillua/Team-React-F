@@ -25,10 +25,7 @@ a:hover {
   color: var(--black);
 }
 
-.fa-play {
-  padding: 20px;
-  background: #fff;
-  color: var(--pink);
-  border-radius: 15px;
-  cursor: pointer;
+.main-heading {
+  font-size: 26px;
+  font-weight: 600;
 }
