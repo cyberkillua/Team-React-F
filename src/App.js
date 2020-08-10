@@ -11,6 +11,7 @@ import Sidebar from "./components/Sidebar/Sidebar";
 
 // CSS
 import "./App.css";
+import AlbumTracks from "./pages/Album/Album-track-list-preview";
 
 class App extends Component {
   constructor() {
@@ -78,6 +79,16 @@ class App extends Component {
   componentDidMount() {
     this.fetchData();
   }
+  albumDetail  = (props) => {
+    console.log(props)
+    return (
+       <div>
+      <h1>TOPIC DETAIL PAGE :</h1>
+    </div>
+    )
+   
+}
+
   render() {
     const { tracks, currentTrack, path, albums } = this.state;
     return (
@@ -134,6 +145,17 @@ class App extends Component {
                     />
                   )}
                 />
+                <Route path='/albums:albumid' 
+                 render={ (props) => (
+                    <AlbumTracks
+                      {...props}
+                      albums={albums}
+                      handlePath={this.handlePath}
+                      currentTrack={currentTrack}
+                      handleClick={this.handleClick}
+                    />
+                  )} />
+                  {/* <Route path="/albums:albumid" component={this.albumDetail} />  */}
                 <Route path="/profile" component={Profile} />
                 <Route path="/signin" component={SigninSignup} />
               </Switch>

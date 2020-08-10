@@ -7,8 +7,8 @@ class Tracks extends Component {
   //   super();
   // }
   componentDidMount() {
-    let path = this.props.match.path;
-    this.props.handlePath(path);
+    // let path = this.props.match.path;
+    // this.props.handlePath(path);
   }
   render() {
     const { tracks, currentTrack, handleClick } = this.props;
