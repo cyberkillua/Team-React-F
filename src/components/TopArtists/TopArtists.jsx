@@ -2,6 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./TopArtists.css";
 const TopArtists = ({ artists }) => {
+  // id:
+  // image:
+  // joindate:
+  // name:
+  // shareurl:
+  // shorturl:
+  // website:
   return (
     <React.Fragment>
       <div className="row">
@@ -9,13 +16,6 @@ const TopArtists = ({ artists }) => {
           See more
         </Link>
         {artists.map((artist, idx) => {
-          // id:
-          // image:
-          // joindate:
-          // name:
-          // shareurl:
-          // shorturl:
-          // website:
           while (idx < 4) {
             return (
               <Link
@@ -31,10 +31,10 @@ const TopArtists = ({ artists }) => {
                   className="artist-image"
                   alt="Artist"
                 />
-                {/* <span className="text-muted">{artist.name}</span> */}
               </Link>
             );
           }
+          return null;
         })}
         ;
       </div>

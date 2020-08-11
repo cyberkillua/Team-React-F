@@ -84,15 +84,14 @@ class App extends Component {
       console.log(err);
     }
   }
-  albumDetail  = (props) => {
-    console.log(props)
+  albumDetail = (props) => {
+    console.log(props);
     return (
-       <div>
-      <h1>TOPIC DETAIL PAGE :</h1>
-    </div>
-    )
-   
-}
+      <div>
+        <h1>TOPIC DETAIL PAGE :</h1>
+      </div>
+    );
+  };
 
   render() {
     const {
@@ -161,8 +160,9 @@ class App extends Component {
                     />
                   )}
                 />
-                <Route path='/albums:albumid' 
-                 render={ (props) => (
+                <Route
+                  path="/albums:albumid"
+                  render={(props) => (
                     <AlbumTracks
                       {...props}
                       albums={albums}
@@ -170,8 +170,9 @@ class App extends Component {
                       currentTrack={currentTrack}
                       handleClick={this.handleClick}
                     />
-                  )} />
-                  {/* <Route path="/albums:albumid" component={this.albumDetail} />  */}
+                  )}
+                />
+                {/* <Route path="/albums:albumid" component={this.albumDetail} />  */}
                 <Route path="/profile" component={Profile} />
                 <Route path="/signin" component={SigninSignup} />
               </Switch>
