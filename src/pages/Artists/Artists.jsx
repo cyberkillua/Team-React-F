@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 
+import Header from "../../components/Header/Header";
+import artist from "./artist.png";
 import "./Artists.css";
 
 class Artists extends Component {
@@ -28,6 +30,13 @@ class Artists extends Component {
     console.log(artists);
     return (
       <div className="row justify-content-center">
+        <Header
+          header="ARTISTS"
+          name="Travis Scott"
+          description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam
+            repellat, quisquam ad sequi ab distinctio."
+          image={artist}
+        />
         {artists.map((artist) => {
           return (
             <div className="card col-3 m-3">
