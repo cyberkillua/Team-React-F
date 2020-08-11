@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./TopArtists.css";
-const TopArtists = ({ artists }) => {
+import "./TopAlbums.css";
+const TopAlbums = ({ albums }) => {
   // id:
   // image:
   // joindate:
@@ -11,28 +11,24 @@ const TopArtists = ({ artists }) => {
   // website:
   return (
     <React.Fragment>
-      <div className="row mb-4" id="top-artists">
+      <div className="row my-5" id="top-albums">
         <div className="col-12">
-          <h1 className="main-heading my-4">Monthly Top Artists</h1>
-          <Link to="/artists" className="see-all-btn">
+          <h1 className="main-heading my-4">Monthly Top Albums</h1>
+          <Link to="/albums" className="see-all-btn">
             See All
           </Link>
         </div>
-        {artists.map((artist, idx) => {
-          while (idx < 6) {
+        {albums.map((album, idx) => {
+          while (idx < 4) {
             return (
-              <Link
-                to={`/artists/${artist.id}`}
-                className="col-2"
-                key={artist.id}
-              >
+              <Link to={`/albums/${album.id}`} className="col-3" key={album.id}>
                 <img
                   src={
-                    artist.image ||
+                    album.image ||
                     "https://pickaface.net/gallery/avatar/dan5276bb68cda93.png"
                   }
-                  className="artist-image"
-                  alt="Artist"
+                  className="album-image"
+                  alt="album"
                 />
               </Link>
             );
@@ -45,4 +41,4 @@ const TopArtists = ({ artists }) => {
   );
 };
 
-export default TopArtists;
+export default TopAlbums;

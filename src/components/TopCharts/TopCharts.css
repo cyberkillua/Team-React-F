@@ -1,0 +1,26 @@
+/* #top-chartss {
+  position: relative;
+} */
+.top-chart-ul {
+  width: 100%;
+}
+.top-chart-ul li {
+  cursor: pointer;
+  font-size: 1.5rem;
+  margin-bottom: 5px;
+  font-weight: 500;
+  min-height: 20px;
+  border: 2px solid rgba(128, 128, 128, 0.143);
+  padding: 15px 10px;
+}
+.top-chart-ul li:hover {
+  opacity: 0.85;
+}
+.numbering {
+  font-size: inherit;
+  padding: 5px 12px;
+  margin-right: 10px;
+  background-color: var(--pink);
+  color: #ffffff;
+  border-radius: 50%;
+}

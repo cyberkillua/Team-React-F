@@ -6,6 +6,8 @@ import Featured from "../../components/Featured/Featured";
 import NowPlaying from "../../components/NowPlaying/NowPlaying";
 import WeeklyTopChart from "../../components/Weekly-top-chart/Weekly-top-chart";
 import TopArtists from "../../components/TopArtists/TopArtists";
+import TopAlbums from "../../components/TopAlbums/TopAlbums";
+import TopCharts from "../../components/TopCharts/TopCharts";
 // CSS
 import "./Homepage.css";
 
@@ -41,10 +43,19 @@ class HomePage extends Component {
             />
           </div>
           <div className="row">
-            <div className="col-6"></div>
-            <div className="col-6" id="top-artists">
-              <h1 className="main-heading mt-3 mb-3">Monthly Top Artists</h1>
+            <div className="col-6">
+              <TopCharts
+                tracks={this.props.tracks}
+                handleClick={this.props.handleClick}
+              />
+            </div>
+            <div className="col-6">
               <TopArtists artists={this.props.artists} />
+
+              <TopAlbums
+                albums={this.props.albums}
+                handleClick={this.props.handleClick}
+              />
             </div>
           </div>
         </div>

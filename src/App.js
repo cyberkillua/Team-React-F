@@ -33,10 +33,10 @@ class App extends Component {
     });
   };
   handleClick = (id, featuredClicked = false) => {
-    console.log(id);
+    // console.log(id);
     let { tracks } = this.state;
     let c = tracks.filter((track) => track.id === id);
-    console.log(c);
+    // console.log(c);
     this.setState({
       currentTrack: c[0],
       featuredClicked:
@@ -66,7 +66,7 @@ class App extends Component {
       let allTracks = albums.map((album) => {
         return album.tracks.map((t) => t);
       });
-      console.log(artists);
+      // console.log(artists);
       allTracks.forEach((track) => {
         for (let i = 0; i < track.length; i++) {
           collectedTracks.push(track[i]);
@@ -85,7 +85,7 @@ class App extends Component {
     }
   }
   albumDetail = (props) => {
-    console.log(props);
+    // console.log(props);
     return (
       <div>
         <h1>TOPIC DETAIL PAGE :</h1>
@@ -123,6 +123,7 @@ class App extends Component {
                       handleClick={this.handleClick}
                       featuredClicked={featuredClicked}
                       artists={artists}
+                      albums={albums}
                     />
                   )}
                 />
