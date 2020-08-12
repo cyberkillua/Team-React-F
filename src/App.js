@@ -7,7 +7,7 @@ import Tracks from "./pages/Tracks/Tracks";
 import Artists from "./pages/Artists/Artists";
 import Profile from "./pages/Profile/Profile";
 import SigninSignup from "./pages/Signin-Signup/SigninSignup";
-import Sidebar from "./components/Sidebar/Sidebar";
+import NowPlaying from "./components/NowPlaying/NowPlaying";
 
 // CSS
 import "./App.css";
@@ -104,79 +104,81 @@ class App extends Component {
     } = this.state;
     return (
       <Router>
-        <div className="container-fluid">
-          <div className="row">
-            <div className="col-2 px-0">
-              <Sidebar path={path} />
-            </div>
-            <div className="col-10 px-0">
-              <Switch>
-                <Route
-                  exact
-                  path="/"
-                  render={(props) => (
-                    <Homepage
-                      {...props}
-                      tracks={tracks}
-                      currentTrack={currentTrack}
-                      handlePath={this.handlePath}
-                      handleClick={this.handleClick}
-                      featuredClicked={featuredClicked}
-                      artists={artists}
-                      albums={albums}
-                    />
-                  )}
+        <div className="container-fluid px-0 mb-5">
+          <Switch>
+            <Route
+              exact
+              path="/"
+              render={(props) => (
+                <Homepage
+                  {...props}
+                  tracks={tracks}
+                  currentTrack={currentTrack}
+                  handlePath={this.handlePath}
+                  handleClick={this.handleClick}
+                  featuredClicked={featuredClicked}
+                  artists={artists}
+                  albums={albums}
+                  path={path}
                 />
-                <Route
-                  path="/tracks"
-                  render={(props) => (
-                    <Tracks
-                      {...props}
-                      tracks={tracks}
-                      currentTrack={currentTrack}
-                      handleClick={this.handleClick}
-                      handlePath={this.handlePath}
-                    />
-                  )}
+              )}
+            />
+            <Route
+              path="/tracks"
+              render={(props) => (
+                <Tracks
+                  {...props}
+                  tracks={tracks}
+                  currentTrack={currentTrack}
+                  handleClick={this.handleClick}
+                  handlePath={this.handlePath}
                 />
-                <Route
-                  path="/albums"
-                  render={(props) => (
-                    <Album
-                      {...props}
-                      tracks={tracks}
-                      handlePath={this.handlePath}
-                      albums={albums}
-                    />
-                  )}
+              )}
+            />
+            <Route
+              path="/albums"
+              render={(props) => (
+                <Album
+                  {...props}
+                  tracks={tracks}
+                  handlePath={this.handlePath}
+                  albums={albums}
                 />
-                <Route
-                  path="/artists"
-                  render={(props) => (
-                    <Artists
-                      {...props}
-                      tracks={tracks}
-                      artists={artists}
-                      handlePath={this.handlePath}
-                    />
-                  )}
+              )}
+            />
+            <Route
+              path="/artists"
+              render={(props) => (
+                <Artists
+                  {...props}
+                  tracks={tracks}
+                  artists={artists}
+                  handlePath={this.handlePath}
                 />
-                <Route
-                  path="/albums:albumid"
-                  render={(props) => (
-                    <AlbumTracks
-                      {...props}
-                      albums={albums}
-                      handlePath={this.handlePath}
-                      currentTrack={currentTrack}
-                      handleClick={this.handleClick}
-                    />
-                  )}
+              )}
+            />
+            <Route
+              path="/albums:albumid"
+              render={(props) => (
+                <AlbumTracks
+                  {...props}
+                  albums={albums}
+                  handlePath={this.handlePath}
+                  currentTrack={currentTrack}
+                  handleClick={this.handleClick}
                 />
-                {/* <Route path="/albums:albumid" component={this.albumDetail} />  */}
-                <Route path="/profile" component={Profile} />
-                <Route path="/signin" component={SigninSignup} />
-              </Switch>
+              )}
+            />
+            {/* <Route path="/albums:albumid" component={this.albumDetail} />  */}
+            <Route path="/profile" component={Profile} />
+            <Route path="/signin" component={SigninSignup} />
+          </Switch>
+        </div>
+
+        <div className="container-fluid px-0 mt-5">
+          <div className="row justify-content-center">
+            <div className="col-10 mx-auto" id="now-playing">
+              <NowPlaying currentTrack={this.state.currentTrack} />
             </div>
           </div>
         </div>

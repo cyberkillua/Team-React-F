@@ -5,14 +5,14 @@ import "./Sidebar.css";
 
 const Sidebar = ({ path }) => {
   return (
-    <section className="px-3 py-4 mx-0" id="sidebar">
-      <div id="brand" className="my-3">
+    <section className="row px-3 py-4 mx-0 ">
+      <div id="brand" className="my-3 col-12">
         <Link to="/">
           <img src={Logo} alt="" />
         </Link>
       </div>
 
-      <div id="recommended" className="my-5">
+      <div id="recommended" className="my-5 col-12">
         <h5 className="sidebar-heading">RECOMMENDED</h5>
         <ul className="nav-link-group list-unstyled px-0">
           <li className="nav-link">
@@ -42,7 +42,7 @@ const Sidebar = ({ path }) => {
         </ul>
       </div>
 
-      <div id="library" className="my-5">
+      <div id="library" className="my-5 col-12">
         <h5 className="sidebar-heading">MY LIBRARY</h5>
         <ul className="nav-link-group list-unstyled px-0">
           <li className="nav-link">
@@ -66,7 +66,7 @@ const Sidebar = ({ path }) => {
         </ul>
       </div>
 
-      <div id="playlists" className="my-5">
+      <div id="playlists" className="my-5 col-12">
         <h5 className="sidebar-heading">PLAYLIST</h5>
         <i className="fas fa-plus add-btn"></i>
         <ul className="nav-link-group list-unstyled px-0">

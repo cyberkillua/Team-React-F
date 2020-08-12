@@ -7,7 +7,7 @@ const Featured = ({ currentTrack }) => {
   return (
     <div
       id="featured"
-      className=" row justify-content-center align-items-center"
+      className="col-12 d-flex px-0 mx-0 justify-content-center align-items-center"
       style={{ backgroundImage: `url(${BackgroundImage})` }}
     >
       <div className="col-4">

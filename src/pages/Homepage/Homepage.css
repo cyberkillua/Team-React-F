@@ -1,8 +1,10 @@
 #now-playing {
   position: fixed;
-  bottom: 10px;
+  bottom: 0;
   right: 0;
   left: 0;
-  /* width: 100%; */
   z-index: 9999999999999;
+
+  border-radius: 90px;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.4);
 }

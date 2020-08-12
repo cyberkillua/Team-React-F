@@ -1,8 +1,11 @@
 audio {
-  width: 60%;
+  width: 100%;
   margin: 0 auto;
-  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.4);
   border-radius: 90px;
   transform: scale(1.05);
   padding: 0 30px;
+  background: transparent !important;
+  color: var(--pink) !important;
+  outline: none !important;
+  border: none;
 }

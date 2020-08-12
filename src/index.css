@@ -14,7 +14,15 @@ body {
   /* background: rgb(221, 221, 221); */
   background: rgba(2, 37, 13, 0.07);
 }
-
+#sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: red !important;
+  height: 100vh;
+}
 a {
   text-decoration: none;
   color: var(--black);
