@@ -1,0 +1,22 @@
+.carded{
+    max-width: 30em;
+    padding: 3em;
+    text-align: center;
+    margin:  0.625em auto;
+    height: 30em;
+}
+h2{
+    font-family: 'Grand Hotel', cursive;
+}
+.my-card{
+    margin-top: 8em;
+    
+}
+.input-field input[type=email]:focus {
+    border-bottom: 1px solid rgb(25, 9, 245) !important;
+    box-shadow: 0 1px 0 0  rgb(25, 9, 245) !important;
+  }
+.input-field input[type=password]:focus {
+    border-bottom: 1px solid rgb(25, 9, 245) !important;
+    box-shadow: 0 1px 0 0  rgb(25, 9, 245) !important;
+  }
