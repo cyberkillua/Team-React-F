@@ -3,7 +3,7 @@ import React, { Component } from "react";
 // Componets
 // import Sidebar from "../../components/Sidebar/Sidebar";
 import Featured from "../../components/Featured/Featured";
-import NowPlaying from "../../components/NowPlaying/NowPlaying";
+// import NowPlaying from "../../components/NowPlaying/NowPlaying";
 import WeeklyTopChart from "../../components/Weekly-top-chart/Weekly-top-chart";
 import TopArtists from "../../components/TopArtists/TopArtists";
 import TopAlbums from "../../components/TopAlbums/TopAlbums";
