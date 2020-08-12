@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import Header from "../../components/Header/Header";
+import Sidebar from "../../components/Sidebar/Sidebar";
 import artist from "./artist.png";
 import "./Artists.css";
 
@@ -30,22 +31,32 @@ class Artists extends Component {
     console.log(artists);
     return (
       <div className="row justify-content-center">
-        <Header
-          header="ARTISTS"
-          name="Travis Scott"
-          description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam
+        <div className="col-2 px-0" id="sidebar">
+          <Sidebar path={this.props.path} />
+        </div>
+        <div
+          className="col-10  px-0 mx-0"
+          style={{ position: "absolute", right: 0 }}
+        >
+          <div className="row justify-content-center">
+            <Header
+              header="ARTISTS"
+              name="Travis Scott"
+              description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam
             repellat, quisquam ad sequi ab distinctio."
-          image={artist}
-        />
-        {artists.map((artist) => {
-          return (
-            <div className="card col-3 m-3">
-              <img src={artist.image} alt="" className="w-25" />
-              <p>Name: {artist.name}</p>
-              <p>Id: {artist.id}</p>
-            </div>
-          );
-        })}
+              image={artist}
+            />
+            {artists.map((artist) => {
+              return (
+                <div className="card col-3 m-3">
+                  <img src={artist.image} alt="" className="w-25" />
+                  <p>Name: {artist.name}</p>
+                  <p>Id: {artist.id}</p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
       </div>
     );
   }
