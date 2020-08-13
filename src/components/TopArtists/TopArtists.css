@@ -1,0 +1,13 @@
+#top-artists {
+  position: relative;
+}
+.artist-image {
+  width: 100%;
+  height: 80px;
+  border-radius: 50%;
+}
+.see-all-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+}

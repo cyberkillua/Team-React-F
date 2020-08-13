@@ -15,6 +15,17 @@ body {
   background: rgba(2, 37, 13, 0.07);
 }
 
+#sidebar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: #ffffff;
+  height: 100vh;
+}
+
 a {
   text-decoration: none;
   color: var(--black);
@@ -25,10 +36,8 @@ a:hover {
   color: var(--black);
 }
 
-.fa-play {
-  padding: 20px;
-  background: #fff;
-  color: var(--pink);
-  border-radius: 15px;
-  cursor: pointer;
+
+.main-heading {
+  font-size: 26px;
+  font-weight: 600;
 }

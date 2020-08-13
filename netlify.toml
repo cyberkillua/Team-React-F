@@ -1,0 +1,9 @@
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[build]
+base = "Team-React-F/"
+publish = "Team-React-F/build/"
+command = "npm run build"

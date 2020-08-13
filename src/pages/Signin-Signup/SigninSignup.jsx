@@ -1,4 +1,5 @@
 import React from "react";
+
 import { Link } from "react-router-dom";
 import Logo from "./logo.png";
 import "./SigninSignup.css";
@@ -46,6 +47,7 @@ const SigninSignup = (props) => {
       </div>
     </div>
   );
+
 };
 
 export default SigninSignup;

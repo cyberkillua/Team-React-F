@@ -9,19 +9,26 @@ import Profile from "./pages/Profile/Profile";
 import SigninSignup from "./pages/Signin-Signup/SigninSignup";
 import Signup from "./pages/Signin-Signup/Signup"
 import Sidebar from "./components/Sidebar/Sidebar";
+import NowPlaying from "./components/NowPlaying/NowPlaying";
+
 
 // CSS
 import "./App.css";
+import AlbumTracks from "./pages/Album/Album-track-list-preview";
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
       albums: [],
+      artists: [],
       tracks: [],
       currentTrack: "",
       index: 0,
       path: "/",
+
+      featuredClicked: false,
+
     };
   }
 
@@ -30,33 +37,42 @@ class App extends Component {
       path,
     });
   };
-  handleClick = (id) => {
-    console.log(id);
+
+  handleClick = (id, featuredClicked = false) => {
+    // console.log(id);
     let { tracks } = this.state;
     let c = tracks.filter((track) => track.id === id);
+    // console.log(c);
     this.setState({
       currentTrack: c[0],
+      featuredClicked:
+        featuredClicked === true
+          ? !this.state.featuredClicked
+          : this.state.featuredClicked,
     });
   };
 
-  // Fetch Data from the API
-  fetchData = async () => {
+  async componentDidMount() {
     try {
-      let collectedTracks = [];
-      // "https://api.jamendo.com//v3.0/albums/?client_id=d5d26306"
-      //   "https://api.jamendo.com/v3.0/albums/?client_id=d5d26306&format=jsonpretty&artist_name=we+are+fm"
-      //   "https://api.jamendo.com/v3.0/albums/file/?client_id=d5d26306&id=2"
-      //   "https://api.jamendo.com/v3.0/albums/tracks/?client_id=d5d26306"
-      const response = await fetch(
-        "https://api.jamendo.com/v3.0/albums/tracks/?client_id=d5d26306&limit=all"
-      );
+      let [albumResponse, artistsResponse] = await Promise.all([
+        fetch(
+          "https://api.jamendo.com/v3.0/albums/tracks/?client_id=d5d26306&limit=all"
+        ),
+        fetch(
+          "https://api.jamendo.com/v3.0/artists/?client_id=d5d26306&limit=all"
+        ),
+      ]);
 
-      const responseJson = await response.json();
-      let albums = responseJson.results;
-      // console.log(albums);
+      const albumResponseJson = await albumResponse.json();
+      const artistsResponseJson = await artistsResponse.json();
+
+      let collectedTracks = [];
+      let albums = albumResponseJson.results;
+      let artists = artistsResponseJson.results;
       let allTracks = albums.map((album) => {
         return album.tracks.map((t) => t);
       });
+      // console.log(artists);
 
       allTracks.forEach((track) => {
         for (let i = 0; i < track.length; i++) {
@@ -65,80 +81,112 @@ class App extends Component {
       });
       let { index } = this.state;
       let currentTrack = collectedTracks[index];
-      // console.log(currentTrack);
+
       this.setState({
         tracks: collectedTracks,
         currentTrack,
         albums,
+        artists,
       });
-    } catch (error) {
-      console.log(error.message);
+    } catch (err) {
+      console.log(err);
     }
+  }
+  albumDetail = (props) => {
+    // console.log(props);
+    return (
+      <div>
+        <h1>TOPIC DETAIL PAGE :</h1>
+      </div>
+    );
   };
 
-  componentDidMount() {
-    this.fetchData();
-  }
   render() {
-    const { tracks, currentTrack, path, albums } = this.state;
+    const {
+      tracks,
+      currentTrack,
+      path,
+      albums,
+      featuredClicked,
+      artists,
+    } = this.state;
     return (
       <Router>
-        <div className="container-fluid">
-          <div className="row">
-            <div className="col-2">
-              <Sidebar path={path} />
-            </div>
-            <div className="col-10 px-0">
-              <Switch>
-                <Route
-                  exact
-                  path="/"
-                  render={(props) => (
-                    <Homepage
-                      {...props}
-                      tracks={tracks}
-                      currentTrack={currentTrack}
-                      handlePath={this.handlePath}
-                    />
-                  )}
+        <div className="container-fluid px-0 mb-5">
+          <Switch>
+            <Route
+              exact
+              path="/"
+              render={(props) => (
+                <Homepage
+                  {...props}
+                  tracks={tracks}
+                  currentTrack={currentTrack}
+                  handlePath={this.handlePath}
+                  handleClick={this.handleClick}
+                  featuredClicked={featuredClicked}
+                  artists={artists}
+                  albums={albums}
+                  path={path}
                 />
-                <Route
-                  path="/tracks"
-                  render={(props) => (
-                    <Tracks
-                      {...props}
-                      tracks={tracks}
-                      currentTrack={currentTrack}
-                      handleClick={this.handleClick}
-                      handlePath={this.handlePath}
-                    />
-                  )}
+              )}
+            />
+            <Route
+              path="/tracks"
+              render={(props) => (
+                <Tracks
+                  {...props}
+                  tracks={tracks}
+                  currentTrack={currentTrack}
+                  handleClick={this.handleClick}
+                  handlePath={this.handlePath}
                 />
-                <Route
-                  path="/albums"
-                  render={(props) => (
-                    <Album
-                      {...props}
-                      tracks={tracks}
-                      handlePath={this.handlePath}
-                      albums={albums}
-                    />
-                  )}
+              )}
+            />
+            <Route
+              path="/albums"
+              render={(props) => (
+                <Album
+                  {...props}
+                  tracks={tracks}
+                  handlePath={this.handlePath}
+                  albums={albums}
                 />
-                <Route
-                  path="/artists"
-                  render={(props) => (
-                    <Artists
-                      {...props}
-                      tracks={tracks}
-                      handlePath={this.handlePath}
-                    />
-                  )}
+              )}
+            />
+            <Route
+              path="/artists"
+              render={(props) => (
+                <Artists
+                  {...props}
+                  tracks={tracks}
+                  artists={artists}
+                  handlePath={this.handlePath}
                 />
-                <Route path="/profile" component={Profile} />
-                <Route path="/signin" component={SigninSignup} />
-                <Route path="/signup" component={Signup} />
-              </Switch>
+              )}
+            />
+            <Route
+              path="/albums:albumid"
+              render={(props) => (
+                <AlbumTracks
+                  {...props}
+                  albums={albums}
+                  handlePath={this.handlePath}
+                  currentTrack={currentTrack}
+                  handleClick={this.handleClick}
+                />
+              )}
+            />
+            {/* <Route path="/albums:albumid" component={this.albumDetail} />  */}
+            <Route path="/profile" component={Profile} />
+            <Route path="/signin" component={SigninSignup} />
+          </Switch>
+        </div>
+
+        <div className="container-fluid px-0 mt-5">
+          <div className="row justify-content-center">
+            <div className="col-10 mx-auto" id="now-playing">
+              <NowPlaying currentTrack={this.state.currentTrack} />
             </div>
           </div>
         </div>

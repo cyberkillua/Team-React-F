@@ -1,0 +1,17 @@
+.main-heading {
+  font-size: 25px;
+  font-weight: 700;
+}
+.track-card {
+  cursor: pointer;
+}
+.track-image {
+  width: 100%;
+  border-radius: 16px;
+  margin: 0 auto;
+  box-shadow: 1px 1px 10px #7f7f7f, -1px -1px 10px #b3b3b3;
+}
+.track-name {
+  font-size: 14px;
+  font-weight: 600;
+}

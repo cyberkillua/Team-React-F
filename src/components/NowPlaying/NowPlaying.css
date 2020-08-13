@@ -1,0 +1,11 @@
+audio {
+  width: 100%;
+  margin: 0 auto;
+  border-radius: 90px;
+  transform: scale(1.05);
+  padding: 0 30px;
+  background: transparent !important;
+  color: var(--pink) !important;
+  outline: none !important;
+  border: none;
+}
